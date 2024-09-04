@@ -1,5 +1,6 @@
 plugins {
     application
+    checkstyle
     id("java")
 }
 
@@ -8,6 +9,10 @@ version = "1.0-SNAPSHOT"
 
 application {
     mainClass = "hexlet.code.App"
+}
+
+checkstyle {
+    toolVersion = "10.18.1"
 }
 
 repositories {
