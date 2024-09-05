@@ -2,7 +2,9 @@ package hexlet.code.game;
 
 public interface Game {
 
-    void start(String playerName);
+    int getScore();
+
+    void start();
 
     void nextRound();
 
