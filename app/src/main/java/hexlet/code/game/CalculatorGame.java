@@ -6,9 +6,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class CalculatorGame implements Game {
-    static Scanner scanner = new Scanner(System.in);
-    static Random ran = new Random();
-    static String[] operations = new String[]{"+", "-", "*"};
+    private static Scanner scanner = new Scanner(System.in);
+    private static Random ran = new Random();
+    private static String[] operations = new String[]{"+", "-", "*"};
 
     private int score;
     private boolean gameOver;

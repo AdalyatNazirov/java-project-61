@@ -6,8 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GcdGame implements Game {
-    static Scanner scanner = new Scanner(System.in);
-    static Random ran = new Random();
+    private static Scanner scanner = new Scanner(System.in);
+    private static Random ran = new Random();
 
     private int score;
     private boolean gameOver;
