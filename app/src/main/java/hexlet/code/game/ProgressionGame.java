@@ -8,6 +8,9 @@ import java.util.Scanner;
 public class ProgressionGame implements Game {
     private static Scanner scanner = new Scanner(System.in);
     private static Random ran = new Random();
+    private static final int MIN_PROGRESSION_LENGTH = 5;
+    private static final int MAX_PROGRESSION_LENGTH = 10;
+
 
     private int score;
     private boolean gameOver;
@@ -24,7 +27,7 @@ public class ProgressionGame implements Game {
     public void nextRound() {
         int start = ran.nextInt(Controller.MAX_NUMBER);
         int step = ran.nextInt(Controller.MAX_NUMBER);
-        int amount = 5 + ran.nextInt(5);
+        int amount = MIN_PROGRESSION_LENGTH + ran.nextInt(MAX_PROGRESSION_LENGTH - MIN_PROGRESSION_LENGTH);
         int hiddenItemIndex = ran.nextInt(amount);
         int[] progression = new int[amount];
         for (int i = 0; i < amount; i++) {
