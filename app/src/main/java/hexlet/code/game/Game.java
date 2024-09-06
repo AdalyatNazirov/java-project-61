@@ -4,7 +4,8 @@ public interface Game {
 
     /**
      * returns score of current launch.
-     * @return
+     *
+     * @return number of rounds finished successfully
      */
     int getScore();
 
@@ -20,7 +21,8 @@ public interface Game {
 
     /**
      * checks if the game finished.
-     * @return
+     *
+     * @return true if game is finished, otherwise false
      */
     boolean isGameOver();
 }

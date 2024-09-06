@@ -50,7 +50,8 @@ public class GcdGame implements Game {
 
     /**
      * checks if the game finished.
-     * @return
+     *
+     * @return true if game is finished, otherwise false
      */
     @Override
     public boolean isGameOver() {
@@ -59,6 +60,7 @@ public class GcdGame implements Game {
 
     /**
      * returns score of current launch.
+     *
      * @return
      */
     @Override

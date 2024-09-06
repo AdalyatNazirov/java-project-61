@@ -52,7 +52,8 @@ public class CalculatorGame implements Game {
 
     /**
      * checks if the game finished.
-     * @return
+     *
+     * @return true if game is finished, otherwise false
      */
     @Override
     public boolean isGameOver() {
@@ -74,6 +75,7 @@ public class CalculatorGame implements Game {
 
     /**
      * returns score of current launch.
+     *
      * @return
      */
     @Override

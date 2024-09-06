@@ -4,6 +4,7 @@ public class EmptyGame implements Game {
 
     /**
      * returns score of current launch.
+     *
      * @return
      */
     @Override
@@ -27,7 +28,8 @@ public class EmptyGame implements Game {
 
     /**
      * checks if the game finished.
-     * @return
+     *
+     * @return true if game is finished, otherwise false
      */
     @Override
     public boolean isGameOver() {
