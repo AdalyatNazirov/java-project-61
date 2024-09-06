@@ -12,6 +12,9 @@ public class PrimeGame implements Game {
     private int score;
     private boolean gameOver;
 
+    /**
+     * starts the game.
+     */
     @Override
     public void start() {
         this.score = 0;
@@ -20,6 +23,9 @@ public class PrimeGame implements Game {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
     }
 
+    /**
+     * run next round.
+     */
     @Override
     public void nextRound() {
         int number = ran.nextInt(Controller.MAX_NUMBER);
@@ -41,11 +47,19 @@ public class PrimeGame implements Game {
         }
     }
 
+    /**
+     * checks if the game finished.
+     * @return
+     */
     @Override
     public boolean isGameOver() {
         return this.gameOver;
     }
 
+    /**
+     * returns score of current launch.
+     * @return
+     */
     @Override
     public int getScore() {
         return score;

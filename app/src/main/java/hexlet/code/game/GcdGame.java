@@ -12,6 +12,9 @@ public class GcdGame implements Game {
     private int score;
     private boolean gameOver;
 
+    /**
+     * starts the game.
+     */
     @Override
     public void start() {
         this.score = 0;
@@ -20,6 +23,9 @@ public class GcdGame implements Game {
         System.out.println("Find the greatest common divisor of given numbers.");
     }
 
+    /**
+     * run next round.
+     */
     @Override
     public void nextRound() {
         int op1 = ran.nextInt(Controller.MAX_NUMBER);
@@ -42,11 +48,19 @@ public class GcdGame implements Game {
         }
     }
 
+    /**
+     * checks if the game finished.
+     * @return
+     */
     @Override
     public boolean isGameOver() {
         return this.gameOver;
     }
 
+    /**
+     * returns score of current launch.
+     * @return
+     */
     @Override
     public int getScore() {
         return score;

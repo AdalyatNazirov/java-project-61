@@ -13,6 +13,9 @@ public class CalculatorGame implements Game {
     private int score;
     private boolean gameOver;
 
+    /**
+     * starts the game.
+     */
     @Override
     public void start() {
         this.score = 0;
@@ -21,6 +24,9 @@ public class CalculatorGame implements Game {
         System.out.println("What is the result of the expression?");
     }
 
+    /**
+     * run next round.
+     */
     @Override
     public void nextRound() {
         String op = operations[ran.nextInt(operations.length)];
@@ -44,6 +50,10 @@ public class CalculatorGame implements Game {
         }
     }
 
+    /**
+     * checks if the game finished.
+     * @return
+     */
     @Override
     public boolean isGameOver() {
         return this.gameOver;
@@ -62,6 +72,10 @@ public class CalculatorGame implements Game {
         }
     }
 
+    /**
+     * returns score of current launch.
+     * @return
+     */
     @Override
     public int getScore() {
         return score;

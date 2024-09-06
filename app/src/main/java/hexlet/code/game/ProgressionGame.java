@@ -15,6 +15,9 @@ public class ProgressionGame implements Game {
     private int score;
     private boolean gameOver;
 
+    /**
+     * starts the game.
+     */
     @Override
     public void start() {
         this.score = 0;
@@ -23,6 +26,9 @@ public class ProgressionGame implements Game {
         System.out.println("What number is missing in the progression?");
     }
 
+    /**
+     * run next round.
+     */
     @Override
     public void nextRound() {
         int start = ran.nextInt(Controller.MAX_NUMBER);
@@ -64,11 +70,19 @@ public class ProgressionGame implements Game {
         return sb.delete(sb.length() - 1, sb.length()).toString();
     }
 
+    /**
+     * checks if the game finished.
+     * @return
+     */
     @Override
     public boolean isGameOver() {
         return this.gameOver;
     }
 
+    /**
+     * returns score of current launch.
+     * @return
+     */
     @Override
     public int getScore() {
         return score;
