@@ -17,7 +17,7 @@ public class ProgressionGame implements Game {
         this.score = 0;
         this.gameOver = false;
 
-        System.out.println("Find the greatest common divisor of given numbers.");
+        System.out.println("What number is missing in the progression?");
     }
 
     @Override
