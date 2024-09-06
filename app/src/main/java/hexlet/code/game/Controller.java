@@ -5,7 +5,7 @@ public class Controller {
     static final int MAX_SCORE = 3;
 
     public static int[] listGames() {
-        return new int[]{1, 2, 3, 4, 5};
+        return new int[]{1, 2, 3, 4, 5, 6};
     }
 
     public static String getGameName(int gameNumber) {
@@ -21,6 +21,8 @@ public class Controller {
                 return "GCD";
             case 5:
                 return "Progression";
+            case 6:
+                return "Prime";
             default:
                 throw new IllegalArgumentException("Invalid game number: " + gameNumber);
         }
@@ -53,6 +55,7 @@ public class Controller {
             case 3 -> new CalculatorGame();
             case 4 -> new GcdGame();
             case 5 -> new ProgressionGame();
+            case 6 -> new PrimeGame();
             default -> throw new IllegalArgumentException("Invalid game number: " + gameNumber);
         };
     }
