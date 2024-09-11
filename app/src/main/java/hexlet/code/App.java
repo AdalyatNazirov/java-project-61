@@ -22,7 +22,7 @@ public class App {
                         || Arrays.binarySearch(Controller.listGames(), gameIndex) >= 0) {
                     break;
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException ignored) {
             }
             System.out.println("Please choose the option from the list above.");
         } while (true);
@@ -34,9 +34,6 @@ public class App {
         }
         System.out.println();
 
-        System.out.println("Welcome to the Brain Games!");
-        var name = Cli.fetchUserName();
-        System.out.println("Hello, " + name + "!");
-        Controller.launch(gameIndex, name);
+        Controller.launch(gameIndex);
     }
 }

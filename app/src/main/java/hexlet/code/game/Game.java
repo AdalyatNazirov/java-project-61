@@ -2,27 +2,15 @@ package hexlet.code.game;
 
 public interface Game {
 
-    /**
-     * returns score of current launch.
-     *
-     * @return number of rounds finished successfully
-     */
-    int getScore();
+    String rules();
 
     /**
-     * starts the game.
+     * Generate next question
      */
-    void start();
+    String nextQuestion();
 
     /**
-     * run next round.
+     * Returns correct answer on last question
      */
-    void nextRound();
-
-    /**
-     * checks if the game finished.
-     *
-     * @return true if game is finished, otherwise false
-     */
-    boolean isGameOver();
+    String getCorrectAnswer();
 }
