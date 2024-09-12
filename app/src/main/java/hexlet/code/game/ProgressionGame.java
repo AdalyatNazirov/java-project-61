@@ -1,60 +1,50 @@
 package hexlet.code.game;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Random;
-import java.util.Scanner;
 
 public class ProgressionGame implements Game {
-    private static Scanner scanner = new Scanner(System.in);
-    private static Random ran = new Random();
+    private final Random randomizer;
+
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int MAX_PROGRESSION_LENGTH = 10;
 
+    private int correctAnswer;
 
-    private int score;
-    private boolean gameOver;
+    ProgressionGame(Random randomizer) {
+        this.randomizer = randomizer;
+    }
 
     /**
      * starts the game.
      */
     @Override
-    public void start() {
-        this.score = 0;
-        this.gameOver = false;
-
-        System.out.println("What number is missing in the progression?");
+    public String rules() {
+        return "What number is missing in the progression?";
     }
 
     /**
      * run next round.
      */
     @Override
-    public void nextRound() {
-        int start = ran.nextInt(Controller.MAX_NUMBER);
-        int step = ran.nextInt(Controller.MAX_NUMBER);
-        int amount = MIN_PROGRESSION_LENGTH + ran.nextInt(MAX_PROGRESSION_LENGTH - MIN_PROGRESSION_LENGTH);
-        int hiddenItemIndex = ran.nextInt(amount);
+    public String nextQuestion() {
+        int start = randomizer.nextInt(Engine.MAX_NUMBER);
+        int step = randomizer.nextInt(Engine.MAX_NUMBER);
+        int amount = MIN_PROGRESSION_LENGTH + randomizer.nextInt(MAX_PROGRESSION_LENGTH - MIN_PROGRESSION_LENGTH);
+        int hiddenItemIndex = randomizer.nextInt(amount);
         int[] progression = new int[amount];
         for (int i = 0; i < amount; i++) {
             progression[i] = start + i * step;
         }
 
-        System.out.println("Question: " + displayHiddenProgression(progression, hiddenItemIndex));
+        correctAnswer = progression[hiddenItemIndex];
 
-        System.out.print("Your answer: ");
-        var answer = scanner.nextLine().trim();
-        String correctAnswer = String.valueOf(progression[hiddenItemIndex]);
-        if (StringUtils.equals(answer, correctAnswer)) {
-            this.score++;
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + answer
-                    + "' is wrong answer ;(. Correct answer was '"
-                    + correctAnswer
-                    + "'.");
-            this.gameOver = true;
-        }
+
+        return displayHiddenProgression(progression, hiddenItemIndex);
+    }
+
+    @Override
+    public String getCorrectAnswer() {
+        return String.valueOf(correctAnswer);
     }
 
     private String displayHiddenProgression(int[] progression, int hiddenItemIndex) {
@@ -70,23 +60,4 @@ public class ProgressionGame implements Game {
         return sb.delete(sb.length() - 1, sb.length()).toString();
     }
 
-    /**
-     * checks if the game finished.
-     *
-     * @return true if game is finished, otherwise false
-     */
-    @Override
-    public boolean isGameOver() {
-        return this.gameOver;
-    }
-
-    /**
-     * returns score of current launch.
-     *
-     * @return
-     */
-    @Override
-    public int getScore() {
-        return score;
-    }
 }

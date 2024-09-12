@@ -2,37 +2,19 @@ package hexlet.code.game;
 
 public class EmptyGame implements Game {
 
-    /**
-     * returns score of current launch.
-     *
-     * @return
-     */
+
     @Override
-    public int getScore() {
-        return Integer.MAX_VALUE;
+    public String rules() {
+        return "";
     }
 
-    /**
-     * starts the game.
-     */
     @Override
-    public void start() {
+    public String nextQuestion() {
+        return "";
     }
 
-    /**
-     * run next round.
-     */
     @Override
-    public void nextRound() {
-    }
-
-    /**
-     * checks if the game finished.
-     *
-     * @return true if game is finished, otherwise false
-     */
-    @Override
-    public boolean isGameOver() {
-        return false;
+    public String getCorrectAnswer() {
+        return "";
     }
 }

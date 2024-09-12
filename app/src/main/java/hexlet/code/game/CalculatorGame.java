@@ -42,7 +42,7 @@ public class CalculatorGame implements Game {
      */
     @Override
     public String getCorrectAnswer() {
-        return this.correctAnswer;
+        return correctAnswer;
     }
 
     private static int correctAnswer(int op1, int op2, String op) {

@@ -45,11 +45,11 @@ public class Controller {
 
         return switch (gameNumber) {
             case GREET_INDEX -> new EmptyGame();
-            case EVEN_INDEX -> new EvenGame();
+            case EVEN_INDEX -> new EvenGame(ran);
             case CALC_INDEX -> new CalculatorGame(ran);
-            case GCD_INDEX -> new GcdGame();
-            case PROGRESSION_INDEX -> new ProgressionGame();
-            case PRIME_INDEX -> new PrimeGame();
+            case GCD_INDEX -> new GcdGame(ran);
+            case PROGRESSION_INDEX -> new ProgressionGame(ran);
+            case PRIME_INDEX -> new PrimeGame(ran);
             default -> throw new IllegalArgumentException("Invalid game number: " + gameNumber);
         };
     }

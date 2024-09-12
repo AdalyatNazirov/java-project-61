@@ -1,6 +1,16 @@
 package hexlet.code.game;
 
+import java.util.Random;
+
 public class EvenGame implements Game {
+
+    private final Random randomizer;
+    private int number;
+
+    public EvenGame(Random randomizer) {
+        this.randomizer = randomizer;
+    }
+
     /**
      * starts the game.
      */
@@ -13,26 +23,14 @@ public class EvenGame implements Game {
      * run next round.
      */
     @Override
-    public void nextRound() {
-        int number = ran.nextInt(Controller.MAX_NUMBER);
-        System.out.println("Question: " + number);
+    public String nextQuestion() {
+        number = randomizer.nextInt(Engine.MAX_NUMBER);
 
-        var answer = scanner.nextLine();
-        System.out.println("Your answer: " + answer);
-
-        if (answer.equals(correctAnswer(number))) {
-            this.score++;
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + answer
-                    + "' is wrong answer ;(. Correct answer was '"
-                    + correctAnswer(number)
-                    + "'.");
-            this.gameOver = true;
-        }
+        return String.valueOf(number);
     }
 
-    private static String correctAnswer(int number) {
+    @Override
+    public String getCorrectAnswer() {
         return number % 2 == 0 ? "yes" : "no";
     }
 }
