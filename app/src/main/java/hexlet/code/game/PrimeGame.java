@@ -1,31 +1,17 @@
 package hexlet.code.game;
 
-import java.util.Random;
-
 public class PrimeGame implements Game {
-    private final Random randomizer;
 
     private int number;
 
-    PrimeGame(Random randomizer) {
-        this.randomizer = randomizer;
-    }
-
-
-    /**
-     * starts the game.
-     */
     @Override
     public String rules() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
-    /**
-     * run next round.
-     */
     @Override
     public String nextQuestion() {
-        number = randomizer.nextInt(Engine.MAX_NUMBER);
+        number = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
 
         return String.valueOf(number);
     }
@@ -33,6 +19,11 @@ public class PrimeGame implements Game {
     @Override
     public String getCorrectAnswer() {
         return isPrime(number) ? "yes" : "no";
+    }
+
+    @Override
+    public boolean canPlay() {
+        return true;
     }
 
     private static boolean isPrime(int number) {

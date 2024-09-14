@@ -17,4 +17,9 @@ public class EmptyGame implements Game {
     public String getCorrectAnswer() {
         return "";
     }
+
+    @Override
+    public boolean canPlay() {
+        return false;
+    }
 }

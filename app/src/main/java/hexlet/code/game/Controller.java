@@ -1,7 +1,5 @@
 package hexlet.code.game;
 
-import java.util.Random;
-
 public class Controller {
     private static final int GREET_INDEX = 1;
     private static final int EVEN_INDEX = 2;
@@ -10,16 +8,14 @@ public class Controller {
     private static final int PROGRESSION_INDEX = 5;
     private static final int PRIME_INDEX = 6;
 
-    private static final Random ran = new Random();
-
     public static int[] listGames() {
         return new int[]{
-                GREET_INDEX,
-                EVEN_INDEX,
-                CALC_INDEX,
-                GCD_INDEX,
-                PROGRESSION_INDEX,
-                PRIME_INDEX};
+            GREET_INDEX,
+            EVEN_INDEX,
+            CALC_INDEX,
+            GCD_INDEX,
+            PROGRESSION_INDEX,
+            PRIME_INDEX};
     }
 
     public static String getGameName(int gameNumber) {
@@ -45,11 +41,11 @@ public class Controller {
 
         return switch (gameNumber) {
             case GREET_INDEX -> new EmptyGame();
-            case EVEN_INDEX -> new EvenGame(ran);
-            case CALC_INDEX -> new CalculatorGame(ran);
-            case GCD_INDEX -> new GcdGame(ran);
-            case PROGRESSION_INDEX -> new ProgressionGame(ran);
-            case PRIME_INDEX -> new PrimeGame(ran);
+            case EVEN_INDEX -> new EvenGame();
+            case CALC_INDEX -> new CalculatorGame();
+            case GCD_INDEX -> new GcdGame();
+            case PROGRESSION_INDEX -> new ProgressionGame();
+            case PRIME_INDEX -> new PrimeGame();
             default -> throw new IllegalArgumentException("Invalid game number: " + gameNumber);
         };
     }
