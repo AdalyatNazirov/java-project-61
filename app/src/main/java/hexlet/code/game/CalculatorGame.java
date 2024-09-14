@@ -6,11 +6,21 @@ public class CalculatorGame implements Game {
 
     private String correctAnswer;
 
+    /**
+     * Provides the rules and instructions for the game.
+     *
+     * @return A string containing the game rules.
+     */
     @Override
     public String rules() {
         return "What is the result of the expression?";
     }
 
+    /**
+     * Generates the next question in the game.
+     *
+     * @return A string representing the next question.
+     */
     @Override
     public String nextQuestion() {
         String op = OPERATIONS[Engine.RANDOM.nextInt(OPERATIONS.length)];
@@ -22,11 +32,21 @@ public class CalculatorGame implements Game {
         return op1 + " " + op + " " + op2;
     }
 
+    /**
+     * Returns the correct answer to the last question.
+     *
+     * @return A string representing the correct answer.
+     */
     @Override
     public String getCorrectAnswer() {
         return correctAnswer;
     }
 
+    /**
+     * Checks if the user is eligible to play this game.
+     *
+     * @return true if the user can play this game; otherwise, false.
+     */
     @Override
     public boolean canPlay() {
         return true;
