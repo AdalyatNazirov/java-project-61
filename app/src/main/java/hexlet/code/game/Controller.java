@@ -14,7 +14,7 @@ public class Controller {
 
         int i = 0;
         for (i = 0; i < listGames().length; i++) {
-            options[i + 1] = i + " - " + Controller.getGameName(i);
+            options[i] = (i + 1) + " - " + Controller.getGameName(i + 1);
         }
 
         options[options.length - 1] = "0 - Exit";
