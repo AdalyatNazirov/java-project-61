@@ -1,12 +1,25 @@
 package hexlet.code.game;
 
 public class Controller {
+    private static final int EXIT = 0;
     private static final int GREET_INDEX = 1;
     private static final int EVEN_INDEX = 2;
     private static final int CALC_INDEX = 3;
     private static final int GCD_INDEX = 4;
     private static final int PROGRESSION_INDEX = 5;
     private static final int PRIME_INDEX = 6;
+
+    public static String[] listOptions() {
+        var options = new String[listGames().length + 1];
+
+        int i = 0;
+        for (i = 0; i < listGames().length; i++) {
+            options[i + 1] = i + " - " + Controller.getGameName(i);
+        }
+
+        options[options.length - 1] = "0 - Exit";
+        return options;
+    }
 
     public static int[] listGames() {
         return new int[]{
@@ -32,6 +45,12 @@ public class Controller {
     }
 
     public static void launch(int gameNumber) {
+        if (gameNumber == EXIT) {
+            System.out.println("Sorry to see you go and hope that we will meet again..;(");
+
+            return;
+        }
+
         Game game = chooseGame(gameNumber);
 
         Engine.start(game);

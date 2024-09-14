@@ -9,10 +9,9 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the game number and press Enter.");
-        for (int i : Controller.listGames()) {
-            System.out.println(i + " - " + Controller.getGameName(i));
+        for (String option : Controller.listOptions()) {
+            System.out.println(option);
         }
-        System.out.println("0 - Exit");
 
         int gameIndex = 0;
         do {
@@ -27,11 +26,6 @@ public class App {
             System.out.println("Please choose the option from the list above.");
         } while (true);
         System.out.println("Your choice: " + gameIndex);
-        if (gameIndex == 0) {
-            System.out.println("Sorry to see you go and hope that we will meet again..;(");
-
-            System.exit(0);
-        }
         System.out.println();
 
         Controller.launch(gameIndex);
