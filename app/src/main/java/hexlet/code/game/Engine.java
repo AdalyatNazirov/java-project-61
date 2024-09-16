@@ -1,6 +1,5 @@
 package hexlet.code.game;
 
-import hexlet.code.Cli;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Random;
@@ -15,22 +14,45 @@ public class Engine {
 
     public static void start(Game game) {
 
+        printWelcomeMessage();
+        String name = askUserName();
+        printGreeting(name);
+
+        var score = playGame(game);
+        printResultMessage(score, name);
+    }
+
+    private static void printWelcomeMessage() {
         System.out.println("Welcome to the Brain Games!");
-        var name = Cli.fetchUserName();
+    }
+
+    private static void printGreeting(String name) {
         System.out.println("Hello, " + name + "!");
-        System.out.println(game.rules());
+    }
+
+    private static String askUserName() {
+        System.out.print("May I have your name? ");
+
+        do {
+            var userName = SCANNER.nextLine();
+            if (!StringUtils.isBlank(userName)) {
+                return userName.trim();
+            }
+            System.out.print("Please enter your name: ");
+        } while (true);
+    }
+
+    private static int playGame(Game game) {
+        System.out.println(game.getRules());
+
         var score = 0;
-
-        if (!game.canPlay()) {
-            return;
-        }
-
         while (true) {
-            System.out.println("Question: " + game.nextQuestion());
+            var round = game.moveNextRound();
+            System.out.println("Question: " + round[0]);
 
             System.out.print("Your answer: ");
             var answer = SCANNER.nextLine().trim();
-            var correctAnswer = game.getCorrectAnswer();
+            var correctAnswer = round[1];
             if (StringUtils.equals(answer, correctAnswer)) {
                 score++;
                 System.out.println("Correct!");
@@ -38,12 +60,15 @@ public class Engine {
                 System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
                 break;
             }
-
             if (score >= MAX_SCORE) {
                 break;
             }
         }
 
+        return score;
+    }
+
+    private static void printResultMessage(double score, String name) {
         if (score == MAX_SCORE) {
             System.out.println("Congratulations, " + name + "!");
         } else {

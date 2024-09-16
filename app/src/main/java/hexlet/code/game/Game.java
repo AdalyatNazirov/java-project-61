@@ -7,26 +7,12 @@ public interface Game {
      *
      * @return A string containing the game rules.
      */
-    String rules();
+    String getRules();
 
     /**
-     * Generates the next question in the game.
+     * Generates the next question and answer in the game.
      *
-     * @return A string representing the next question.
+     * @return An array representing the next question and answer.
      */
-    String nextQuestion();
-
-    /**
-     * Returns the correct answer to the last question.
-     *
-     * @return A string representing the correct answer.
-     */
-    String getCorrectAnswer();
-
-    /**
-     * Checks if the user is eligible to play this game.
-     *
-     * @return true if the user can play this game; otherwise, false.
-     */
-    boolean canPlay();
+    String[] moveNextRound();
 }

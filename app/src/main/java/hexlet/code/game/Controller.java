@@ -1,8 +1,6 @@
 package hexlet.code.game;
 
 public class Controller {
-    private static final int EXIT = 0;
-    private static final int GREET_INDEX = 1;
     private static final int EVEN_INDEX = 2;
     private static final int CALC_INDEX = 3;
     private static final int GCD_INDEX = 4;
@@ -10,31 +8,30 @@ public class Controller {
     private static final int PRIME_INDEX = 6;
 
     public static String[] listOptions() {
-        var options = new String[listGames().length + 1];
+        var options = new String[listGames().length];
 
         int i = 0;
-        for (i = 0; i < listGames().length; i++) {
-            options[i] = (i + 1) + " - " + Controller.getGameName(i + 1);
+        for (int index : listGames()) {
+            options[i] = index + " - " + getGameName(index);
+            i++;
         }
 
-        options[options.length - 1] = "0 - Exit";
         return options;
     }
 
-    public static int[] listGames() {
+    private static int[] listGames() {
+
         return new int[]{
-            GREET_INDEX,
-            EVEN_INDEX,
-            CALC_INDEX,
-            GCD_INDEX,
-            PROGRESSION_INDEX,
-            PRIME_INDEX};
+                EVEN_INDEX,
+                CALC_INDEX,
+                GCD_INDEX,
+                PROGRESSION_INDEX,
+                PRIME_INDEX};
     }
 
-    public static String getGameName(int gameNumber) {
+    private static String getGameName(int gameNumber) {
 
         return switch (gameNumber) {
-            case GREET_INDEX -> "Greet";
             case EVEN_INDEX -> "Even";
             case CALC_INDEX -> "Calc";
             case GCD_INDEX -> "GCD";
@@ -45,12 +42,6 @@ public class Controller {
     }
 
     public static void launch(int gameNumber) {
-        if (gameNumber == EXIT) {
-            System.out.println("Sorry to see you go and hope that we will meet again..;(");
-
-            return;
-        }
-
         Game game = chooseGame(gameNumber);
 
         Engine.start(game);
@@ -59,7 +50,6 @@ public class Controller {
     private static Game chooseGame(int gameNumber) {
 
         return switch (gameNumber) {
-            case GREET_INDEX -> new EmptyGame();
             case EVEN_INDEX -> new EvenGame();
             case CALC_INDEX -> new CalculatorGame();
             case GCD_INDEX -> new GcdGame();

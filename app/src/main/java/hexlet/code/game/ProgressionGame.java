@@ -5,15 +5,13 @@ public class ProgressionGame implements Game {
     private static final int MIN_PROGRESSION_LENGTH = 5;
     private static final int MAX_PROGRESSION_LENGTH = 10;
 
-    private int correctAnswer;
-
     /**
      * Provides the rules and instructions for the game.
      *
      * @return A string containing the game rules.
      */
     @Override
-    public String rules() {
+    public String getRules() {
         return "What number is missing in the progression?";
     }
 
@@ -23,7 +21,7 @@ public class ProgressionGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String nextQuestion() {
+    public String[] moveNextRound() {
         int start = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         int step = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         int amount = MIN_PROGRESSION_LENGTH + Engine.RANDOM.nextInt(MAX_PROGRESSION_LENGTH - MIN_PROGRESSION_LENGTH);
@@ -33,30 +31,10 @@ public class ProgressionGame implements Game {
             progression[i] = start + i * step;
         }
 
-        correctAnswer = progression[hiddenItemIndex];
+        var correctAnswer = progression[hiddenItemIndex];
 
 
-        return displayHiddenProgression(progression, hiddenItemIndex);
-    }
-
-    /**
-     * Returns the correct answer to the last question.
-     *
-     * @return A string representing the correct answer.
-     */
-    @Override
-    public String getCorrectAnswer() {
-        return String.valueOf(correctAnswer);
-    }
-
-    /**
-     * Checks if the user is eligible to play this game.
-     *
-     * @return true if the user can play this game; otherwise, false.
-     */
-    @Override
-    public boolean canPlay() {
-        return true;
+        return new String[]{displayHiddenProgression(progression, hiddenItemIndex), String.valueOf(correctAnswer)};
     }
 
     private String displayHiddenProgression(int[] progression, int hiddenItemIndex) {

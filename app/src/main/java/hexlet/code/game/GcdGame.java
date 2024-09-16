@@ -2,16 +2,13 @@ package hexlet.code.game;
 
 public class GcdGame implements Game {
 
-    private int op1;
-    private int op2;
-
     /**
      * Provides the rules and instructions for the game.
      *
      * @return A string containing the game rules.
      */
     @Override
-    public String rules() {
+    public String getRules() {
         return "Find the greatest common divisor of given numbers.";
     }
 
@@ -21,31 +18,11 @@ public class GcdGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String nextQuestion() {
-        op1 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
-        op2 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
-
-        return op1 + " " + op2;
-    }
-
-    /**
-     * Returns the correct answer to the last question.
-     *
-     * @return A string representing the correct answer.
-     */
-    @Override
-    public String getCorrectAnswer() {
-        return String.valueOf(correctAnswer(op1, op2));
-    }
-
-    /**
-     * Checks if the user is eligible to play this game.
-     *
-     * @return true if the user can play this game; otherwise, false.
-     */
-    @Override
-    public boolean canPlay() {
-        return true;
+    public String[] moveNextRound() {
+        var op1 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
+        var op2 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
+        var correctAnswer = String.valueOf(correctAnswer(op1, op2));
+        return new String[]{op1 + " " + op2, correctAnswer};
     }
 
     private static int correctAnswer(int op1, int op2) {
