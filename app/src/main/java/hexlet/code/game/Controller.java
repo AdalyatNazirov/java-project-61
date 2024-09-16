@@ -22,11 +22,11 @@ public class Controller {
     private static int[] listGames() {
 
         return new int[]{
-                EVEN_INDEX,
-                CALC_INDEX,
-                GCD_INDEX,
-                PROGRESSION_INDEX,
-                PRIME_INDEX};
+            EVEN_INDEX,
+            CALC_INDEX,
+            GCD_INDEX,
+            PROGRESSION_INDEX,
+            PRIME_INDEX};
     }
 
     private static String getGameName(int gameNumber) {
