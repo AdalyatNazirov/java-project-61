@@ -18,7 +18,7 @@ public class PrimeGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String[] moveNextRound() {
+    public String[] moveToNextRound() {
         var number = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         var correctAnswer = isPrime(number) ? "yes" : "no";
         return new String[]{

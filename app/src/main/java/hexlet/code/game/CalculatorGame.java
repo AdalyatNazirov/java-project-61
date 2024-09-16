@@ -20,7 +20,7 @@ public class CalculatorGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String[] moveNextRound() {
+    public String[] moveToNextRound() {
         var op = OPERATIONS[Engine.RANDOM.nextInt(OPERATIONS.length)];
         var op1 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         var op2 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);

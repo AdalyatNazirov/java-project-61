@@ -21,7 +21,7 @@ public class ProgressionGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String[] moveNextRound() {
+    public String[] moveToNextRound() {
         int start = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         int step = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         int amount = MIN_PROGRESSION_LENGTH + Engine.RANDOM.nextInt(MAX_PROGRESSION_LENGTH - MIN_PROGRESSION_LENGTH);

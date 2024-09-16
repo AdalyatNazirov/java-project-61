@@ -13,11 +13,11 @@ public class Engine {
 
 
     public static void start(Game game) {
-
         printWelcomeMessage();
         String name = askUserName();
         printGreeting(name);
 
+        printRules(game);
         var score = playGame(game);
         printResultMessage(score, name);
     }
@@ -43,11 +43,9 @@ public class Engine {
     }
 
     private static int playGame(Game game) {
-        System.out.println(game.getRules());
-
         var score = 0;
         while (true) {
-            var round = game.moveNextRound();
+            var round = game.moveToNextRound();
             System.out.println("Question: " + round[0]);
 
             System.out.print("Your answer: ");
@@ -68,11 +66,15 @@ public class Engine {
         return score;
     }
 
-    private static void printResultMessage(double score, String name) {
+    private static void printRules(Game game) {
+        System.out.println(game.getRules());
+    }
+
+    private static void printResultMessage(double score, String username) {
         if (score == MAX_SCORE) {
-            System.out.println("Congratulations, " + name + "!");
+            System.out.println("Congratulations, " + username + "!");
         } else {
-            System.out.println("Let's try again, " + name + "!");
+            System.out.println("Let's try again, " + username + "!");
         }
     }
 }

@@ -18,7 +18,7 @@ public class EvenGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String[] moveNextRound() {
+    public String[] moveToNextRound() {
         var number = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         var correctAnswer = number % 2 == 0 ? "yes" : "no";
         return new String[]{String.valueOf(number), correctAnswer};

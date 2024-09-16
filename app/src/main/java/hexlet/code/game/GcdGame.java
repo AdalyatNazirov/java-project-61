@@ -18,7 +18,7 @@ public class GcdGame implements Game {
      * @return A string representing the next question.
      */
     @Override
-    public String[] moveNextRound() {
+    public String[] moveToNextRound() {
         var op1 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         var op2 = Engine.RANDOM.nextInt(Engine.MAX_NUMBER);
         var correctAnswer = String.valueOf(correctAnswer(op1, op2));

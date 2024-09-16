@@ -14,5 +14,5 @@ public interface Game {
      *
      * @return An array representing the next question and answer.
      */
-    String[] moveNextRound();
+    String[] moveToNextRound();
 }
