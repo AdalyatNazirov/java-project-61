@@ -9,7 +9,7 @@ public class Cli {
         System.out.println("Welcome to the Brain Games!");
 
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-        System.out.print("May I have your name? ");
+        System.out.println("May I have your name? ");
 
         String userName = null;
         do {
@@ -17,7 +17,7 @@ public class Cli {
             if (!StringUtils.isBlank(userName)) {
                 break;
             }
-            System.out.print("Please enter your name: ");
+            System.out.println("Please enter your name: ");
         } while (true);
         System.out.println("Hello, " + userName);
     }
