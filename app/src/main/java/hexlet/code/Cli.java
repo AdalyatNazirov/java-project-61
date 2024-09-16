@@ -19,6 +19,6 @@ public class Cli {
             }
             System.out.println("Please enter your name: ");
         } while (true);
-        System.out.println("Hello, " + userName);
+        System.out.println("Hello, " + userName + "!");
     }
 }
