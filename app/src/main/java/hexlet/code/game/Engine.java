@@ -13,36 +13,21 @@ public class Engine {
 
 
     public static void start(Game game) {
-        printWelcomeMessage();
-        String name = askUserName();
-        printGreeting(name);
-
-        printRules(game);
-        var score = playGame(game);
-        printResultMessage(score, name);
-    }
-
-    private static void printWelcomeMessage() {
         System.out.println("Welcome to the Brain Games!");
-    }
-
-    private static void printGreeting(String name) {
-        System.out.println("Hello, " + name + "!");
-    }
-
-    private static String askUserName() {
         System.out.print("May I have your name? ");
 
+        String userName;
         do {
-            var userName = SCANNER.nextLine();
+            userName = SCANNER.nextLine();
             if (!StringUtils.isBlank(userName)) {
-                return userName.trim();
+                break;
             }
             System.out.print("Please enter your name: ");
         } while (true);
-    }
+        System.out.println("Hello, " + userName + "!");
 
-    private static int playGame(Game game) {
+        System.out.println(game.getRules());
+
         var score = 0;
         while (true) {
             var round = game.moveToNextRound();
@@ -56,25 +41,14 @@ public class Engine {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                break;
+
+                System.out.println("Let's try again, " + userName + "!");
+                return;
             }
             if (score >= MAX_SCORE) {
-                break;
+                System.out.println("Congratulations, " + userName + "!");
+                return;
             }
-        }
-
-        return score;
-    }
-
-    private static void printRules(Game game) {
-        System.out.println(game.getRules());
-    }
-
-    private static void printResultMessage(double score, String username) {
-        if (score == MAX_SCORE) {
-            System.out.println("Congratulations, " + username + "!");
-        } else {
-            System.out.println("Let's try again, " + username + "!");
         }
     }
 }
